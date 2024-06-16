@@ -1,0 +1,42 @@
+<div class="file-table">
+    <div class="table-header">
+        <!--
+        <div class="column radio-column">
+        </div>-->
+        <div class="column checkbox-column">
+            <input type="checkbox"  />
+        </div>    
+        <span style="width: 64px;"></span>
+      
+        <div class="column">Name</div>
+        <div class="column" *ngIf="desktopview">Type</div>
+        <div class="column">Size</div>
+        <div class="column">Date Created</div>
+    </div>
+    <div *ngFor="let folder of foldersDisplay" class="table-row" [attr.data-id]="folder.id" [attr.data-name]="folder.name">
+        <div class="column checkbox-column">
+            <input type="checkbox" [(ngModel)]="folder.selected" />
+        </div>
+        <div class="column icon-column">
+            <img src="{{ icons.getIcon('folder') }}" alt="icon" class="file-icon" />
+        </div>
+        <div class="column">{{ folder.name|filename }}</div>
+        <div class="column" *ngIf="desktopview">folder</div>
+        <div class="column">{{ folder.totalSize }}</div>
+        <div class="column">{{ folder.date_created | date }}</div>  
+    </div>      
+    <div *ngFor="let file of filesDisplay" class="table-row" [attr.data-id]="file.id" [attr.data-name]="file.filename">
+        <div class="column checkbox-column">
+            <input type="checkbox" [(ngModel)]="file.selected" />
+        </div>
+        <div class="column icon-column">
+            <img src="{{ icons.getIcon(file.filetype) }}" alt="icon" class="file-icon" />
+        </div>
+        <div class="column" *ngIf="desktopview">{{ file.filename|filenameD }}</div>
+        <div class="column" *ngIf="mobileview">{{ file.filename|filename }}</div>
+        <div class="column" *ngIf="desktopview">{{ file.filetype}}</div>
+        <div class="column">{{ file.file_size | filesize }}</div>
+        <div class="column">{{ file.date_created | date }}</div>
+    </div>
+    <!-- Add more rows as needed -->
+</div>

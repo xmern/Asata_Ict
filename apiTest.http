@@ -1,0 +1,23 @@
+POST http://localhost:8000/api/register/
+Content-Type: application/json
+
+
+{
+    "email":"presleyrichnkume@gmail.com",
+    "first_name":"Presley",
+    "last_name":"Richard",
+    "password":"dev-presley"
+}
+############################################
+
+POST http://localhost:8000/api/login/
+Content-Type: application/json
+
+{
+    "email":"JohnDoe@gmail.com",
+    "password":"Baptist"
+}
+###############################################
+GET http://localhost:8000/api/me
+Cookie: "jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZXhwIjoxNzE3NjM4OTg3LCJpYXQiOjE3MTc1NTI1ODd9.yiYTF2Z2O50DFV0_8RlxysoseHjMTav9w1QiU7DPzjE;"
+Content-Type: application/json

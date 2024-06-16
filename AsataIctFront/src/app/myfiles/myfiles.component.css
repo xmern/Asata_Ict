@@ -1,0 +1,20 @@
+.container{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: start;
+    padding: 0;
+    height: 100vh;
+    /*overflow-y: hidden;*/
+    background-color: #f0f2f3;
+    width:100%;
+}
+.controlpanel{
+    height:30%;
+    width: 100%;
+}
+.contentpanel{
+    height:70%;
+    width: 100%;
+    
+}

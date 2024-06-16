@@ -1,0 +1,355 @@
+/*font-family: Source Sans Pro, sans-serif;*/
+.Desktop-UI{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: start;
+    padding: 0;
+    height: 100vh;
+    overflow-y: hidden;
+    background-color: #f0f2f3;
+}
+#homenav-D{
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: center;
+    padding: 0;
+    height:10%; 
+    margin-left: 15px;
+    p{
+        /*font-family: Raleway;*/
+        font-size: 30px;
+    }
+}
+.sidenav{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    width:20%;
+    background-color: #f0f2f3;
+    align-self: flex-start;
+    /*border-right: 1px solid rgb(163, 167, 163);*/
+    
+}
+#spacer{
+    width:4%;
+    height: 100%;
+    background-color: #f0f2f3;
+}
+
+/* Button container */
+.action-btn {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px 20px;
+    background-color: #f0f2f3;
+    color: black;
+    border-radius: 5px;
+    /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);*/
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+}
+
+/* Image inside the button */
+.action-btn img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+/* Text inside the button */
+.action-btn p {
+    margin: 0;
+    font-size: 16px;
+    font-family: Source Sans Pro, sans-serif;
+}
+
+/* Hover effect */
+.action-btn:hover {
+    background-color: #cce3fca8;
+    transform: translateY(-2px);
+    /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);*/
+}
+
+
+.mainpanel{
+    flex: 1;
+    height:100%;
+    align-self: flex-start;
+    background-color: #f0f2f3;
+    
+}
+#panel-spacer{
+    width:2;
+}
+
+.contentpanel{
+    overflow-x: scroll;
+}
+
+  /*file actions*/
+  .modal-container {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /*background-color: rgba(0, 0, 0, 0.4);*/
+}
+  
+.modal {
+    background-color: #fefefe;
+    margin-left: 40px;
+    margin-top: 10%;
+    padding: 20px;
+    /*border: 1px solid #888;*/
+    border-radius: 10px;
+    width: 200px;
+    position: relative;
+    box-shadow: 0 10px 10px #eeedede8;
+}
+ 
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+  
+.modal-content {
+    margin-top: 20px;
+    margin-left: 2%;
+    /*overflow-y: scroll;*/
+    p{
+        font-size: larger;
+    }
+    /* Button Styles */
+
+/* Button container */
+.custom-button {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding: 10px 20px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    /*box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);*/
+    cursor: pointer;
+    transition: background-color 0.3s, transform 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    width: 80%;
+}
+
+/* Image inside the button */
+.custom-button img {
+    width: 24px;
+    height: 24px;
+    margin-right: 10px;
+}
+
+/* Text inside the button */
+.custom-button p {
+    margin: 0;
+    font-size: 16px;
+    font-family: Source Sans Pro, sans-serif;
+}
+
+/* Hover effect */
+.custom-button:hover {
+    background-color: #cce3fca8;
+    transform: translateY(-2px);
+    /*box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);*/
+}
+}
+.icon{
+    margin-left: 40%;
+}  
+.show {
+   display: block;
+}
+
+/*folder modal*/
+/* The Modal (background) */
+
+.modal-container {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    /*background-color: rgba(0, 0, 0, 0.4);*/
+}
+  
+.foldermodal {
+    display: flex;
+    flex-direction: column;
+    background-color: #fefefe;
+    margin-left: 40%;
+    margin-top: 10%;
+    padding: 20px;
+    /*border: 1px solid #888;*/
+    border-radius: 10px;
+    width: 40%;
+    position: relative;
+    box-shadow: 0 10px 10px #eeedede8;
+}
+ 
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+  
+.close:hover,
+.close:focus {
+    color: black;
+    text-decoration: none;
+    cursor: pointer;
+}
+  
+.foldermodal-content {
+    margin-top: 20px;
+    margin-left: 2%;
+    
+    /*overflow-y: scroll;*/
+    form{
+        display: flex; 
+        flex-direction: column;
+        
+    }
+    p{
+        font-size: larger;
+    }
+
+      
+    input {
+        padding: 0.75rem;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        font-size: 1rem;
+        transition: border-color 0.3s ease;
+        width:60%;
+    }
+      
+    input:focus {
+        border-color: #007bff;
+        outline: none;
+    }
+      
+    .has-error input {
+        border-color: #e74c3c;
+    }    
+
+}
+.icon{
+    margin-left: 40%;
+}  
+.show {
+   display: block;
+}
+
+
+#folderName {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    box-sizing: border-box;
+}
+
+.error {
+    color: red;
+    font-size: 0.8em;
+}
+
+
+
+/* ------------mobile styles ---------------------*/
+.Mobile-UI {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    width:100vw;
+    overflow: hidden;
+    overflow-x: hidden;
+    position: fixed;
+    background-color: #f0f2f3;
+  }
+  .mobile-homenav {
+    display: flex;
+    align-items: center;
+    background-color: #f1f1f1;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+    height: 5%;
+    width:100%;
+  }
+  
+  .brand {
+    display: flex;
+    align-items: center;
+  }
+  
+  .brand img {
+    margin-right: 10px;
+  }
+  .mobile-mainpanel{
+    height: calc(100% - 20% - 50px);
+    overflow-y:scroll;
+    overflow-x: hidden;
+  }
+  .bottomnav {
+    display: flex;
+    padding: 5px;
+    justify-content: center;
+    background-color: #f0f2f3;    
+    height: 50px;
+    width:100%; 
+    
+        
+  }
+  
+  #mobile-actions {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+  }
+  
+  .mobile-action-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 40px;
+    height: 40px;
+    margin: 0 5px;
+    background-color: #f0f2f3;
+    /*border: 1px solid #ccc;*/
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .mobile-action-btn img {
+    max-width: 100%;
+    max-height: 100%;
+  }
+
+
+
+  

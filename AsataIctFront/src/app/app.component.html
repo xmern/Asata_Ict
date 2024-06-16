@@ -1,0 +1,152 @@
+
+<!--Desktop-UI-->
+  <!--login-->
+  <div *ngIf="!userlogged "><router-outlet></router-outlet></div>
+<!--<div *ngIf="!userlogged "><app-login></app-login></div> --> 
+  
+  <!--main application-->
+
+<div *ngIf="userlogged">
+<div class="Desktop-UI" *ngIf="desktopview" >
+  <div class="sidenav" [ngStyle]="{'width': sidenavWidth}" >
+    <div id="homenav-D">
+      <span style="width: 10%; "></span>
+      <img src="assets\logos\temp\favicon_io (5)\favicon-32x32.png">
+      <span style="width:20px"></span> 
+      <p *ngIf="!sidenavclosed"> Asata</p>
+    </div>
+        
+    <div id="actions">
+      <div class="action-btn" (click)="minimiseSidenav()"><img src="assets/icons/window.png"></div>
+      <div class="action-btn"><img src="assets/icons/profile2.png"> <p *ngIf="!sidenavclosed">You</p></div>
+      <div class="action-btn" (click)="openModal()"><img src="assets/icons/plus.png"> <p *ngIf="!sidenavclosed">Add New</p></div>
+      <div class="action-btn" (click)="openFiles()"><img src="assets/icons/open-folder.png" > <p *ngIf="!sidenavclosed">My Files</p></div>
+      <div class="action-btn"><img src="assets/icons/recent.png"> <p *ngIf="!sidenavclosed">Recent</p></div>
+      <div class="action-btn"><img src="assets/icons/photos.png"> <p *ngIf="!sidenavclosed">Photos</p></div>
+      <div class="action-btn"><img src="assets/icons/file-sharing.png"> <p *ngIf="!sidenavclosed">Shared</p></div>
+      <div class="action-btn"><img src="assets/icons/recycle-bin.png"> <p *ngIf="!sidenavclosed">Recycle Bin</p></div>
+      <input type="file" #fileInput (change)="onFileSelected($event)" multiple style="display: none;" />
+      <div *ngIf="uploading">
+        <p>Uploading...</p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" [style.width.%]="progress" aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+  
+  <div class="mainpanel">
+    <div class="contentpanel">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div class="modal-container" [ngClass]="{ 'show': showModal }" (click)="closeModal()">    
+    <div class="modal" (click)="stopPropagation($event)">
+      <!--<span class="close" (click)="closeModal()">&times;</span>-->
+      <div class="modal-content">
+      <div class="custom-button" (click)="openFolderModal()">
+          <img src="assets\icons\foldersel.png" alt="">
+          <p>folder</p>
+      </div>
+      <div class="custom-button" (click)="triggerFileInput()">
+          <img src="assets/icons/upload-file.png" alt="">
+          <p>files upload</p>
+      </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="modal-container" *ngIf="isFolderModalOpen" [ngClass]="{'show': isFolderModalOpen}" (click)="closeFolderModal()"> 
+  <div class="foldermodal"  (click)="stopPropagation($event)">
+    <div class="foldermodal-content">
+        <span class="close" (click)="closeFolderModal()">&times;</span>
+        <p>Enter Folder Name</p>
+        <form [formGroup]="folderForm" (ngSubmit)="submitFolder()" >
+            <input type="text" formControlName="folderName" placeholder="Folder Name">
+            <div *ngIf="folderForm.get('folderName')?.invalid && (folderForm.get('folderName')?.dirty || folderForm.get('folderName')?.touched)">
+                <small *ngIf="folderForm.get('folderName')?.errors?.['required']" class="error">Folder name is required</small>
+            </div>
+            <button style="width:60px; height: 30px; background-color:  white; font-family: Source Sans Pro, sans-serif; color: black; border-radius: 5px;" type="submit" [disabled]="folderForm.invalid">create</button>
+        </form>
+    </div>
+
+  </div>
+  </div>
+
+</div>
+
+
+
+<!--Mobile-UI-->
+<div class="Mobile-UI" *ngIf="mobileview">
+  <div class="mobile-homenav">
+    <div class="brand">
+      <img src="assets/logos/temp/favicon_io (5)/favicon-32x32.png" alt="Logo">
+      <p>Asata</p>
+    </div>
+    <span id="spacer"></span>
+    <div class="mobile-action-btn"  (click)="openModal()">
+      <img src="assets/icons/plus.png" alt="Add">
+    </div>
+  </div>
+  <div class="mobile-mainpanel">
+    <router-outlet></router-outlet>
+  </div>
+  
+  <div class="bottomnav">
+    <div id="mobile-actions">
+      <!--<div class="mobile-action-btn" (click)="minimiseSidenav()"><img src="assets/icons/window.png"></div>-->
+      <div class="mobile-action-btn"><img src="assets/icons/profile2.png"> </div>
+      
+      <div class="mobile-action-btn" (click)="openFiles()"><img src="assets/icons/open-folder.png" ></div>
+      <div class="mobile-action-btn"><img src="assets/icons/recent.png"></div>
+      <div class="mobile-action-btn"><img src="assets/icons/photos.png"> </div>
+      <div class="mobile-action-btn"><img src="assets/icons/file-sharing.png"></div>
+      <div class="mobile-action-btn"><img src="assets/icons/recycle-bin.png"></div>
+      <input type="file" #fileInput (change)="onFileSelected($event)" multiple style="display: none;" />
+      <div *ngIf="uploading">
+        <p>Uploading...</p>
+        <div class="progress">
+          <div class="progress-bar" role="progressbar" [style.width.%]="progress" aria-valuenow="progress" aria-valuemin="0" aria-valuemax="100">{{progress}}%</div>
+        </div>
+      </div>
+    
+    </div>
+  </div>
+
+  </div> 
+  <div class="modal-container" [ngClass]="{ 'show': showModal }" (click)="closeModal()">    
+    <div class="modal" (click)="stopPropagation($event)">
+      <!--<span class="close" (click)="closeModal()">&times;</span>-->
+      <div class="modal-content">
+      <div class="custom-button" (click)="openFolderModal()">
+          <img src="assets\icons\foldersel.png" alt="">
+          <p>folder</p>
+      </div>
+      <div class="custom-button" (click)="triggerFileInput()">
+          <img src="assets/icons/upload-file.png" alt="">
+          <p>files upload</p>
+      </div>
+        
+      </div>
+    </div>
+  </div>
+  <div class="modal-container" *ngIf="isFolderModalOpen" [ngClass]="{'show': isFolderModalOpen}" (click)="closeFolderModal()"> 
+  <div class="foldermodal"  (click)="stopPropagation($event)">
+    <div class="foldermodal-content">
+        <span class="close" (click)="closeFolderModal()">&times;</span>
+        <p>Enter Folder Name</p>
+        <form [formGroup]="folderForm" (ngSubmit)="submitFolder()" >
+            <input type="text" formControlName="folderName" placeholder="Folder Name">
+            <div *ngIf="folderForm.get('folderName')?.invalid && (folderForm.get('folderName')?.dirty || folderForm.get('folderName')?.touched)">
+                <small *ngIf="folderForm.get('folderName')?.errors?.['required']" class="error">Folder name is required</small>
+            </div>
+            <button style="width:60px; height: 30px; background-color:  white; font-family: Source Sans Pro, sans-serif; color: black; border-radius: 5px;" type="submit" [disabled]="folderForm.invalid">create</button>
+        </form>
+    </div>
+
+  </div>
+  </div>
+
+</div>

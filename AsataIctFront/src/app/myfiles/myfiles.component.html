@@ -1,0 +1,10 @@
+<div class="container">
+    <div class="controlpanel">
+        <button (click)="loadData()">load</button>
+
+    </div>
+    <div #scrollContainer  class="contentpanel">
+        <app-file-table [filesDisplay]="data.files" [foldersDisplay]="data.folders" ></app-file-table>
+        <div *ngIf="loading" class="loading">Loading...</div>
+    </div>
+</div>
