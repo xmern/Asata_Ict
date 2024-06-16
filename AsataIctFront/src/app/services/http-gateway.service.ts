@@ -8,7 +8,7 @@ import { UserDataService } from './userauth/user-data.service';
   providedIn: 'root'
 })
 export class HttpGatewayService {
-  private baseUrl: string = 'http://localhost:8000/api'; // Replace with your server's base URL
+  private baseUrl: string = 'http://192.168.0.197:8000/api'; // Replace with your server's base URL
   headers:any
   constructor(private http: HttpClient, private userdata:UserDataService) {}
   private getUploadHeaders(): HttpHeaders {
